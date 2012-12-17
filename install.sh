@@ -1,7 +1,7 @@
 # elevate to sudo to get shit done
-#su -
-#apt-get update
-#apt-get install openswan xl2tpd ppp
+su -
+apt-get update
+apt-get install openswan xl2tpd ppp
 
 # wipe an existing files from the output dir
 rm -rf templates/output/*
