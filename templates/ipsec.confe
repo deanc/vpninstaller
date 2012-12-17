@@ -1,0 +1,27 @@
+version	2.0	# conforms to second version of ipsec.conf specification
+
+config setup
+	virtual_private=%v4:10.0.0.0/8,%v4:192.168.0.0/16,%v4:172.16.0.0/12
+    	nat_traversal=yes
+    	protostack=netkey
+    	plutostderrlog=/tmp/log.txt	
+
+conn L2TP-PSK
+    authby=secret
+    pfs=no
+    rekey=no
+    type=tunnel
+    esp=aes128-sha1
+    ike=aes128-sha-modp1024
+    ikelifetime=8h
+    keylife=1h
+    left=<IP>
+    leftnexthop=%defaultroute
+    leftprotoport=17/1701
+    right=%any
+    rightprotoport=17/%any
+    rightsubnetwithin=0.0.0.0/0
+    auto=add
+    dpddelay=30
+    dpdtimeout=120
+    dpdaction=clear
